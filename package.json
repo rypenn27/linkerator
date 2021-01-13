@@ -1,14 +1,14 @@
 {
   "name": "starting_code",
   "version": "1.0.0",
-  "description": "",
+  "description": "So, you want to build a full-stack JavaScript application with:",
   "main": "index.js",
   "scripts": {
     "postinstall": "npm run client:build",
-    "client:dev": "react-scripts start",
     "client:build": "react-scripts build",
     "server:dev": "nodemon index.js",
     "db:build": "node ./db/init_db",
+    "start:dev": "react-scripts start",
     "start": "node index.js"
   },
   "keywords": [],
@@ -19,12 +19,14 @@
     "express": "^4.17.1",
     "morgan": "^1.10.0",
     "pg": "^8.2.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.1"
+    "react-scripts": "^3.4.4",
+    "yarn": "^1.22.10"
   },
   "devDependencies": {
+    "case-sensitive-paths-webpack-plugin": "^2.3.0",
     "nodemon": "^2.0.4"
   },
   "proxy": "http://localhost:5000",
@@ -39,5 +41,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FullstackAcademy/univ-boilerplate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/FullstackAcademy/univ-boilerplate/issues"
+  },
+  "homepage": "https://github.com/FullstackAcademy/univ-boilerplate#readme"
 }

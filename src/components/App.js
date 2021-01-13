@@ -1,28 +1,29 @@
-import React, { useState, useEffect } from 'react';
-
-import {
-  getSomething
-} from '../api';
+import React, { useState, useEffect } from "react";
+import Searchbar from "./Searchbar";
+import { getLinks } from "../api";
+import SearchResults from "./SearchResults";
 
 const App = () => {
-  const [message, setMessage] = useState('');
+  const [links, setLinks] = useState("");
 
   useEffect(() => {
-    getSomething()
-      .then(response => {
-        setMessage(response.message);
+    getLinks()
+      .then((response) => {
+        console.log(response);
+        setLinks([]);
       })
-      .catch(error => {
-        setMessage(error.message);
+      .catch((error) => {
+        console.log(error.message);
       });
-  });
+  }, []);
 
   return (
     <div className="App">
-      <h1>Hello, World!</h1>
-      <h2>{ message }</h2>
+      <h1>Search for links</h1>
+      <Searchbar setResults={setLinks}></Searchbar>
+      <SearchResults results={links} />
     </div>
   );
-}
+};
 
 export default App;

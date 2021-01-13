@@ -1,0 +1,19 @@
+/* #app {
+  display: grid;
+  grid-template-rows: 120px 1fr;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 12px;
+  height: calc(100vh - 16px);
+  width: calc(100vw - 16px);
+} */
+
+#search {
+  grid-row: 1;
+  grid-column: 1;
+}
+
+#results {
+  grid-row: 2;
+  grid-column: 1;
+  overflow-y: scroll;
+}
