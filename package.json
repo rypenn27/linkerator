@@ -41,13 +41,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/FullstackAcademy/univ-boilerplate.git"
-  },
-  "bugs": {
-    "url": "https://github.com/FullstackAcademy/univ-boilerplate/issues"
-  },
-  "homepage": "https://github.com/FullstackAcademy/univ-boilerplate#readme"
+  }
 }
