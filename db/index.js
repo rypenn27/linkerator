@@ -81,6 +81,22 @@ async function createTags(tagList) {
   }
 }
 
+async function getTagByName(tagName) {
+  try {
+    const { rows } = await client.query(
+      `
+    SELECT * FROM tags
+    WHERE name = '${tagName}';
+    `
+    );
+    if (rows.length === 0) return null;
+    return rows[0];
+  } catch (error) {
+    console.log("I am unhappy", error);
+    throw error;
+  }
+}
+
 async function createlinkTag(linkId, tagId) {
   try {
     await client.query(
@@ -161,6 +177,16 @@ async function getlinksById(linkId) {
   }
 }
 
+async function getOrCreateTag(tagName) {
+  let tag = await getTagByName(tagName);
+  if (!tag) {
+    tag = await createTags([tagName]);
+    console.log(tag);
+    tag = tag[0];
+  }
+  return tag;
+}
+
 // export
 module.exports = {
   client,
@@ -172,5 +198,6 @@ module.exports = {
   getlinksById,
   createlinkTag,
   addTagsTolink,
+  getOrCreateTag,
   // db methods
 };

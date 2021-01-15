@@ -1,0 +1,19 @@
+.main-panel {
+  display: flex;
+}
+
+.content {
+  width: 60%;
+}
+
+.aside {
+  width: 40%;
+  padding: 15px;
+  border-left: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+
+h3 {
+  font-family: "Courier New", Courier, monospace;
+  color: black;
+}
