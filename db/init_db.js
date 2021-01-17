@@ -34,7 +34,7 @@ async function createTables() {
       CREATE TABLE links (
         id SERIAL PRIMARY KEY,
         linkname varchar(255) UNIQUE NOT NULL,
-        count varchar(255) NOT NULL,
+        count INTEGER NOT NULL,
         comment varchar(255) NOT NULL
       );
       CREATE TABLE tags (
@@ -74,17 +74,17 @@ async function populateInitialData() {
     console.log("creating links");
     await createLink({
       linkname: "www.google.com",
-      count: "01-10-2021",
+      count: 0,
       comment: "wow",
     });
     await createLink({
       linkname: "https://www.youtube.com/",
-      count: "01-10-2021",
+      count: 0,
       comment: "wow",
     });
     await createLink({
       linkname: "https://amazon.com/",
-      count: "01-10-2021",
+      count: 0,
       comment: "wow",
     });
     console.log("created");

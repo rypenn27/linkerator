@@ -1,20 +1,15 @@
 import React, { useState } from "react";
 
-import { getLinks } from "../api";
-
-const SearchBar = ({ setResults }) => {
+const SearchBar = ({ setSearchTerm }) => {
   const [text, setText] = useState("");
 
   const handleTextChange = (event) => {
     setText(event.target.value);
   };
 
-  async function handleSubmit(event) {
+  function handleSubmit(event) {
     event.preventDefault();
-
-    const { links } = await getLinks();
-
-    setResults(links);
+    setSearchTerm(text);
   }
 
   return (

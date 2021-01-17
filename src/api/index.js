@@ -35,8 +35,16 @@ export async function addBookmarkAPI({ websiteUrl, tags, comments }) {
 export async function getLinks() {
   try {
     const { data } = await axios.get("/api/links");
-    console.log("links data", data);
     return data.links;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function incrementClickCount(link) {
+  try {
+    const { data } = await axios.put(`/api/links/${link.id}/visit`);
+    return data.link;
   } catch (error) {
     throw error;
   }

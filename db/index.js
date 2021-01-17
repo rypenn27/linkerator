@@ -28,6 +28,24 @@ async function createLink({ linkname, count, comment }) {
     throw error;
   }
 }
+async function incrementLinkCount(linkId) {
+  try {
+    const {
+      rows: [link],
+    } = await client.query(
+      `
+      UPDATE links
+        SET count = count + 1
+      WHERE
+        id = ${linkId}
+      RETURNING *;
+    `
+    );
+    return link;
+  } catch (error) {
+    throw error;
+  }
+}
 
 async function getAllLinks() {
   try {
@@ -48,6 +66,24 @@ async function getAllTags() {
       FROM tags;
     `);
     return tags;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function getAllLinksWithEmbeddedTags() {
+  try {
+    const { rows } = await client.query(`
+      SELECT id, linkname, count, comment, tags
+      FROM links L
+      LEFT JOIN (
+        SELECT LT."linkId" AS id, array_agg(T.name) AS tags
+        FROM link_tags LT
+        JOIN tags T ON T.id = LT."tagId"
+        GROUP BY LT."linkId"
+      ) T USING (id);
+    `);
+    return rows;
   } catch (error) {
     throw error;
   }
@@ -199,5 +235,7 @@ module.exports = {
   createlinkTag,
   addTagsTolink,
   getOrCreateTag,
+  getAllLinksWithEmbeddedTags,
+  incrementLinkCount,
   // db methods
 };
