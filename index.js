@@ -1,6 +1,6 @@
 const express = require("express");
 const { client } = require("./db");
-const PORT = process.env.PORT || 5000;
+const { PORT = 3000 } = process.env;
 const server = express();
 
 // create logs for everything
